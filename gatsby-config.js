@@ -4,7 +4,7 @@
 module.exports = {
   siteMetadata: {
     title: `Kitty`,
-    siteUrl: `https://www.yourdomain.tld`,
+    siteUrl: `https://kitty-gamma.vercel.app/`,
   },
   plugins: [],
 }
