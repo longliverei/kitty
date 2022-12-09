@@ -1,7 +1,7 @@
 import React, {useState, useEffect } from "react";
 import '../components/index.css';
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { useStaticQuery, graphql } from "gatsby";
+import BackgroundImage from "gatsby-background-image";
 
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
@@ -11,17 +11,32 @@ const IndexPage = () => {
           title
         }
       }
+      file(relativePath: {eq: "paws.jpg"}) {
+        childImageSharp {
+          fluid(quality: 90, maxWidth: 1920) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
     }
   `)
+  
+  const bgImage = data.file.childImageSharp.fluid;
 
   return (
-    <main>
-      <div className="border">
-        <h1>{data.site.siteMetadata.title}</h1>
-        <Kitty />
-        <button type="button">Nova imagem</button>
-      </div>
-    </main>
+    <BackgroundImage
+      Tag="section"
+      className="bg"
+      fluid={bgImage}
+    >
+      <main>
+        <div className="border">
+          <h1>{data.site.siteMetadata.title}</h1>
+          <Kitty />
+          <button type="button">Nova imagem</button>
+        </div>
+      </main>
+    </BackgroundImage>
   )
 }
 
@@ -33,13 +48,13 @@ function Kitty() {
       .then(res => res.json())
       .then(data => {
         const img = data[0]
-        setKitty(img);
+        setKitty(img.url);
       })
   }, []);
 
   return (
     <div>
-      <img className="img" src={kitty.url} alt="api response" />
+      <img className="img" src={kitty} alt="api response" />
     </div>
   )
 }
