@@ -26,7 +26,7 @@ main {
     border: solid rgb(211, 250, 206);
     background-color: rgb(235, 250, 233);
     border-radius: 10px;
-    width: 40%;
+    width: 50%;
     height: 90vh;
     display: flex;
     flex-direction: column;
@@ -61,4 +61,16 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+@media (max-width: 1100px) {
+    .border {
+        width: 90%;
+    }
+}
+
+@media (max-width: 374px) {
+    .border {
+        width: 95%;
+    }
 }
