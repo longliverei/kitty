@@ -1,11 +1,23 @@
 import React, {useState, useEffect } from "react";
 import '../components/index.css';
-
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { useStaticQuery, graphql } from "gatsby";
 
 const IndexPage = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          title
+        }
+      }
+    }
+  `)
+
   return (
     <main>
       <div className="border">
+        <h1>{data.site.siteMetadata.title}</h1>
         <Kitty />
         <button type="button">Nova imagem</button>
       </div>
@@ -27,7 +39,7 @@ function Kitty() {
 
   return (
     <div>
-      <img src={kitty.url} alt="api response"></img>
+      <img className="img" src={kitty.url} alt="api response" />
     </div>
   )
 }

@@ -3,8 +3,11 @@
  */
 module.exports = {
   siteMetadata: {
-    title: `Kitty`,
+    title: `A lot of Kittens! ~`,
     siteUrl: `https://kitty-gamma.vercel.app/`,
   },
-  plugins: [],
+  plugins: [
+    "gatsby-plugin-image",
+    "gatsby-plugin-sharp"
+  ],
 }
