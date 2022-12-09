@@ -33,7 +33,6 @@ const IndexPage = () => {
         <div className="border">
           <h1>{data.site.siteMetadata.title}</h1>
           <Kitty />
-          <button type="button">Nova imagem</button>
         </div>
       </main>
     </BackgroundImage>
@@ -44,17 +43,20 @@ function Kitty() {
   const [kitty, setKitty] = useState(0);
 
   useEffect(() => {
-    fetch('https://api.thecatapi.com/v1/images/search')
-      .then(res => res.json())
-      .then(data => {
-        const img = data[0]
-        setKitty(img.url);
-      })
+    fetchData();
   }, []);
+  
+  const fetchData = () => fetch('https://api.thecatapi.com/v1/images/search')
+    .then(res => res.json())
+    .then(data => {
+      const img = data[0]
+      setKitty(img.url);
+    })
 
   return (
-    <div>
+    <div className="image-box">
       <img className="img" src={kitty} alt="api response" />
+      <button type="button" onClick={fetchData}>Nova imagem</button>
     </div>
   )
 }
