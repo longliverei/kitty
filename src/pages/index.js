@@ -1,7 +1,6 @@
 import React, {useState, useEffect } from "react";
 import '../components/index.css';
 import { useStaticQuery, graphql } from "gatsby";
-import BackgroundImage from "gatsby-background-image";
 
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
@@ -11,31 +10,16 @@ const IndexPage = () => {
           title
         }
       }
-      file(relativePath: {eq: "paws.jpg"}) {
-        childImageSharp {
-          fluid(quality: 90, maxWidth: 1920) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
     }
   `)
-  
-  const bgImage = data.file.childImageSharp.fluid;
 
   return (
-    <BackgroundImage
-      Tag="section"
-      className="bg"
-      fluid={bgImage}
-    >
-      <main>
-        <div className="border">
-          <h1>{data.site.siteMetadata.title}</h1>
-          <Kitty />
-        </div>
-      </main>
-    </BackgroundImage>
+    <main>
+      <div className="border">
+        <h1>{data.site.siteMetadata.title}</h1>
+        <Kitty />
+      </div>
+    </main>
   )
 }
 
