@@ -38,7 +38,7 @@ button {
     border-radius: 15px;
     background: rgb(211, 250, 206);
     font-family:Verdana, Geneva, Tahoma, sans-serif;
-    color: rgb(250, 192, 231);
+    color: rgb(252, 133, 212);
     font-weight: bold;
     font-size: 1em;
 }
@@ -49,7 +49,7 @@ button:hover {
 }
 
 h1 {
-    color: rgb(250, 192, 231);
+    color: rgb(252, 133, 212);
     font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 
