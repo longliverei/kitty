@@ -1,10 +1,15 @@
 import React, {useState, useEffect } from "react";
+import '../components/index.css';
+
 
 const IndexPage = () => {
   return (
-    <div>
-      <Kitty />
-    </div>
+    <main>
+      <div className="border">
+        <Kitty />
+        <button type="button">Nova imagem</button>
+      </div>
+    </main>
   )
 }
 
